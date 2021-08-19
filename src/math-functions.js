@@ -62,10 +62,10 @@ how to do this. However, you may continue to use the + operator for string conca
 
 export function sumAndMultiplyThreeNumbers(a, b, c) { //eslint-disable-line
     const sideArray = [];
-    const tripSum = sum(sum(a,b)[0], c)[0];
-    
-    const tripMult = multiply(multiply(a,b)[0], c)[0];
-    
+    const tripSum = sum(sum(a, b)[0], c)[0];
+
+    const tripMult = multiply(multiply(a, b)[0], c)[0];
+
     sideArray.push(tripSum, tripMult, `${a} and ${b} and ${c} sum to ${tripSum}.`, `The product of ${a} and ${b} and ${c} is ${tripMult}.`);
     return sideArray;
 }
@@ -93,8 +93,8 @@ export function sumArrayWithThreeNumbers(sumArr) {
     const a = sumArr[0];
     const b = sumArr[1];
     const c = sumArr[2];
-    const tripSum = sum(sum(a,b)[0], c)[0];
-    sideArray.push(tripSum, `${a},${b},${c} was passed in as an array of numbers, and ${tripSum} is their sum.`)
+    const tripSum = sum(sum(a, b)[0], c)[0];
+    sideArray.push(tripSum, `${a},${b},${c} was passed in as an array of numbers, and ${tripSum} is their sum.`);
     return sideArray;
 }
 
@@ -122,8 +122,8 @@ export function multiplyArrayWithThreeNumbers(multArr) { //eslint-disable-line
     const a = multArr[0];
     const b = multArr[1];
     const c = multArr[2];
-    const tripMult = multiply(multiply(a,b)[0], c)[0];
-    sideArray.push(tripMult, `The numbers ${a},${b},${c} have a product of ${tripMult}.` );
+    const tripMult = multiply(multiply(a, b)[0], c)[0];
+    sideArray.push(tripMult, `The numbers ${a},${b},${c} have a product of ${tripMult}.`);
     return sideArray;
 }
 
@@ -135,7 +135,9 @@ export function multiplyArrayWithThreeNumbers(multArr) { //eslint-disable-line
 
 /////////////////////////////////////
 /* STRETCH GOAL: Problem 6
-Write a function called multiplyAnyArray() that takes an array of numbers of any length as its argument and returns an array whose first element is the product of those numbers, and the second element is a string that EXACTLY follows this example and concatenates a message using the arguments that were passed into the function:
+Write a function called multiplyAnyArray() that takes an array of numbers of any length as its argument
+ and returns an array whose first element is the product of those numbers, and the second element is a 
+ string that EXACTLY follows this example and concatenates a message using the arguments that were passed into the function:
 
 "The numbers 1,2,3,4,5 have a product of 120."
 
@@ -145,8 +147,25 @@ This function should be dynamic, accepting an array of any length.
 */
 
 export function multiplyAnyArray(dynamicArray) { //eslint-disable-line
+    const sideArray = [];
+    let workingTotal = 1;
+    let string = `The numbers `;
+    for(let i = 0; i < dynamicArray.length; i++) {
 
+        workingTotal = (multiply(workingTotal, dynamicArray[i])[0]);
+        string = string + dynamicArray[i];
+        if(dynamicArray[i] === dynamicArray[dynamicArray.length - 1]) {}
+        else {
+            string = string + ',';
+        }
+    }
+    
+    sideArray.push(workingTotal);
+    string = string + ` have a product of ${workingTotal}.`;
+    sideArray.push(string);
+    return sideArray;
 }
+console.log(multiplyAnyArray([2, 3, 5]));
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. 
 // You're done! Submit the link to the repo following the instructions in Canvas.
