@@ -154,18 +154,20 @@ export function multiplyAnyArray(dynamicArray) { //eslint-disable-line
 
         workingTotal = (multiply(workingTotal, dynamicArray[i])[0]);
         string = string + dynamicArray[i];
-        if(dynamicArray[i] === dynamicArray[dynamicArray.length - 1]) {}
+        if(dynamicArray[i] === dynamicArray[dynamicArray.length - 1]) {
+            string = string + ' ';
+        }
         else {
             string = string + ',';
         }
     }
     
     sideArray.push(workingTotal);
-    string = string + ` have a product of ${workingTotal}.`;
+    string = string + `have a product of ${workingTotal}.`;
     sideArray.push(string);
     return sideArray;
 }
-console.log(multiplyAnyArray([2, 3, 5]));
+
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. 
 // You're done! Submit the link to the repo following the instructions in Canvas.
